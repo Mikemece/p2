@@ -42,7 +42,7 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     @Override
     public void deleteFirst() {
         if (first == null) {
-            throw new RuntimeException("Can't delete first element of empty list");
+            throw new DoubleEndedQueueException("Can't delete first element of empty list");
         }
         DequeNode<T> next = first.getNext();
         first = next;
@@ -52,7 +52,7 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     @Override
     public void deleteLast() {
         if (last == null) {
-            throw new RuntimeException("Can't delete last element of empty list");
+            throw new DoubleEndedQueueException("Can't delete last element of empty list");
         }
         DequeNode<T> prev = last.getPrevious();
         last = prev;
