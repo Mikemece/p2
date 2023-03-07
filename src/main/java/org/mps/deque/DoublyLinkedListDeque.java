@@ -7,44 +7,70 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     private int size;
 
     public DoublyLinkedListDeque() {
-        // TODO
+        size = 0;
+        first = null;
+        last = null;
     }
 
     @Override
     public void prepend(T value) {
-        // TODO
+        size++;
+        DequeNode<T> nodo = new DequeNode<T>(value, null, first);
+        if(first!=null){
+            first.setPrevious(nodo);
+            first = nodo;
+        }else{
+            first = nodo;
+            last = nodo;
+        }
     }
 
     @Override
     public void append(T value) {
-        // TODO
+        size++;
+        DequeNode<T> nodo = new DequeNode<T>(value, last, null);
+        if(last!=null){
+            last.setNext(nodo);
+            last = nodo;
+        }else{
+            first = nodo;
+            last = nodo;
+        }
+
     }
 
     @Override
     public void deleteFirst() {
-        // TODO
+        if (first == null) {
+            throw new DoubleEndedQueueException("Can't delete first element of empty list");
+        }
+        DequeNode<T> next = first.getNext();
+        first = next;
+        if (first != null) first.setPrevious(null);
     }
 
     @Override
     public void deleteLast() {
-        // TODO
+        if (last == null) {
+            throw new DoubleEndedQueueException("Can't delete last element of empty list");
+        }
+        DequeNode<T> prev = last.getPrevious();
+        last = prev;
+        if (last != null) last.setNext(null);
     }
 
     @Override
     public T first() {
-        // TODO
-        return null;
+        return first.getItem();
     }
 
     @Override
     public T last() {
-        // TODO
-        return null;
+        return last.getItem();
     }
 
     @Override
     public int size() {
-        // TODO
-        return 0;
+        return size;
     }
 }
