@@ -22,12 +22,23 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public void deleteFirst() {
-        // TODO
+
+        if (first == null) {
+            throw new RuntimeException("Can't delete first element of empty list");
+        }
+        DequeNode<T> next = first.getNext();
+        first = next;
+        if (first != null) first.setPrevious(null);
     }
 
     @Override
     public void deleteLast() {
-        // TODO
+        if (last == null) {
+            throw new RuntimeException("Can't delete last element of empty list");
+        }
+        DequeNode<T> prev = last.getPrevious();
+        last = prev;
+        if (last != null) last.setNext(null);
     }
 
     @Override
