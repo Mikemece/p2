@@ -74,11 +74,13 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public T first() {
+        if (first == null) return null;
         return first.getItem();
     }
 
     @Override
     public T last() {
+        if (last == null) return null;
         return last.getItem();
     }
 
