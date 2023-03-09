@@ -45,8 +45,9 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     @Override
     public void deleteFirst() {
         if (first == null) { // lista vacía
-            throw new RuntimeException("Can't delete first element of empty list");
+            throw new DoubleEndedQueueException("Can't delete first element of empty list");
         }
+        size--;
         if (first == last) { // lista con un elemento
             first = null;
             last = null;
@@ -59,8 +60,9 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     @Override
     public void deleteLast() {
         if (last == null) { // lista vacía
-            throw new RuntimeException("Can't delete last element of empty list");
+            throw new DoubleEndedQueueException("Can't delete last element of empty list");
         }
+        size--;
         if (first == last) { // lista con un elemento
             first = null;
             last = null;
