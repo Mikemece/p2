@@ -42,51 +42,51 @@ public class DequeNodeTest {
      */
 
     @Nested
-    @DisplayName("Tests to prove the position of nodes")
+    @DisplayName("The node will be in ")
     class testsOfPosition {
         @Test
-        @DisplayName("Node is the first")
+        @DisplayName("first position")
         void nodoEsPrimero() {
             assertTrue(primero.isFirstNode());
         }
 
         @Test
-        @DisplayName("Node is the last")
+        @DisplayName("last position")
         void nodoEsUltimo() {
             assertTrue(ultimo.isLastNode());
         }
 
         @Test
-        @DisplayName("Node is not terminal")
+        @DisplayName("a non terminal position")
         void nodoConPrevioYSiguienteNoTerminal() {
             assertTrue(medio.isNotATerminalNode());
         }
 
         @Test
-        @DisplayName("Node with no next is terminal")
-        void nodoConSiguienteNoTerminal() {
+        @DisplayName("a terminal position because it is first")
+        void nodoSinPrevioTerminal() {
             assertFalse(primero.isNotATerminalNode());
         }
 
         @Test
-        @DisplayName("Node with no previous is terminal")
-        void nodoConPrevioNoTerminal() {
+        @DisplayName("a terminal position because it is last")
+        void nodoSinSiguienteTerminall() {
             assertFalse(ultimo.isNotATerminalNode());
         }
     }
 
     @Nested
-    @DisplayName("Tests for getters")
+    @DisplayName("The node will return ")
     class testGets {
         @Test
-        @DisplayName("Returns next node null")
+        @DisplayName("next node null")
         void devuelveSiguienteNull() {
             DequeNode expectedValue = null;
             DequeNode obtainedValue = ultimo.getNext();
             assertEquals(expectedValue, obtainedValue);
         }
         @Test
-        @DisplayName("Returns next node")
+        @DisplayName("next node")
         void devuelveSiguiente() {
             DequeNode expectedValue = medio;
             DequeNode obtainedValue = primero.getNext();
@@ -94,7 +94,7 @@ public class DequeNodeTest {
         }
 
         @Test
-        @DisplayName("Returns previous node null")
+        @DisplayName("previous node null")
         void devuelvePrevioNull() {
             DequeNode expectedValue = null;
             DequeNode obtainedValue = primero.getPrevious();
@@ -102,7 +102,7 @@ public class DequeNodeTest {
         }
 
         @Test
-        @DisplayName("Returns previous node")
+        @DisplayName("previous node")
         void devuelvePrevio() {
             DequeNode expectedValue = medio;
             DequeNode obtainedValue = ultimo.getPrevious();
@@ -110,10 +110,10 @@ public class DequeNodeTest {
         }
 
         @Nested
-        @DisplayName("Tests for getItem()")
+        @DisplayName("the right item of type ")
         class testItems {
             @Test
-            @DisplayName("Returns item null")
+            @DisplayName("null")
             void devuelveItemNull() {
                 Object expectedValue = null;
                 Object obtainedValue = vacio.getItem();
@@ -121,7 +121,7 @@ public class DequeNodeTest {
             }
 
             @Test
-            @DisplayName("Returns right int")
+            @DisplayName("int")
             void devuelveItemInt() {
                 Object expectedValue = 1;
                 Object obtainedValue = primero.getItem();
@@ -129,7 +129,7 @@ public class DequeNodeTest {
             }
 
             @Test
-            @DisplayName("Returns right String")
+            @DisplayName("String")
             void devuelveItemString() {
                 Object expectedValue = "prueba";
                 Object obtainedValue = medio.getItem();
@@ -137,7 +137,7 @@ public class DequeNodeTest {
             }
 
             @Test
-            @DisplayName("Returns right Double")
+            @DisplayName("Double")
             void devuelveItemDouble() {
                 Object expectedValue = 93.12;
                 Object obtainedValue = ultimo.getItem();
@@ -147,10 +147,10 @@ public class DequeNodeTest {
     }
 
     @Nested
-    @DisplayName("Tests for setters")
+    @DisplayName("In a node will be changed ")
     class testSet {
         @Test
-        @DisplayName("Changes the item")
+        @DisplayName("the item")
         void cambiaItem() {
             vacio.setItem(12);
 
@@ -160,7 +160,7 @@ public class DequeNodeTest {
         }
 
         @Test
-        @DisplayName("Changes previous node")
+        @DisplayName("the previous node")
         void cambiaPrevio() {
             vacio.setPrevious(ultimo);
 
@@ -170,7 +170,7 @@ public class DequeNodeTest {
         }
 
         @Test
-        @DisplayName("Changes next node")
+        @DisplayName("the next node")
         void cambiaSiguiente() {
             vacio.setNext(primero);
 
