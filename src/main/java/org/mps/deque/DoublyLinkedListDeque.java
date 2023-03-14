@@ -88,4 +88,17 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     public int size() {
         return size;
     }
+
+    public T get(int index){
+        DequeNode<T> nodo = first;
+        while(index>0){
+            nodo = nodo.getNext();
+            index--;
+            if(nodo==null){
+                throw new DoubleEndedQueueException("Index out of bounds");
+            }
+        }
+
+        return nodo.getItem();
+    }
 }

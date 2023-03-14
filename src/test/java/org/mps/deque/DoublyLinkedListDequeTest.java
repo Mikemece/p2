@@ -149,5 +149,14 @@ public class DoublyLinkedListDequeTest {
                 assertEquals(1, list.size());
             }
         }
+
+        @Test
+        void getTest(){
+            list.append(1);
+            list.append(2);
+            int obtainedValue =(int) list.get(1);
+            int expectedValue = 2;
+            assertEquals(expectedValue, obtainedValue);
+        }
     }
 }
