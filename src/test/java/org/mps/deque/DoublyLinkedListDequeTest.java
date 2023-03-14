@@ -164,10 +164,10 @@ public class DoublyLinkedListDequeTest {
     }
 
     @Test
-    void getIndiceMayorQueSize(){  //Si el índice pedido es mayor que la cantidad de nodos (índice empieza en 0) dará error
+    void getIndiceMayorQueSize() {  //Si el índice pedido es mayor que la cantidad de nodos (índice empieza en 0) dará error
         list.append(1);
         list.append(2);
-        assertThrows(DoubleEndedQueueException.class, ()->list.get(2));
+        assertThrows(DoubleEndedQueueException.class, () -> list.get(2));
     }
 
 }
