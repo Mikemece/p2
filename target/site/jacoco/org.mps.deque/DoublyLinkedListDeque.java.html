@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DoublyLinkedListDeque.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">p2</a> &gt; <a href="index.source.html" class="el_package">org.mps.deque</a> &gt; <span class="el_source">DoublyLinkedListDeque.java</span></div><h1>DoublyLinkedListDeque.java</h1><pre class="source lang-java linenums">package org.mps.deque;
+
+public class DoublyLinkedListDeque&lt;T&gt; implements DoubleEndedQueue&lt;T&gt; {
+
+    private DequeNode&lt;T&gt; first;
+    private DequeNode&lt;T&gt; last;
+    private int size;
+
+<span class="fc" id="L9">    public DoublyLinkedListDeque() {</span>
+<span class="fc" id="L10">        size = 0;</span>
+<span class="fc" id="L11">        first = null;</span>
+<span class="fc" id="L12">        last = null;</span>
+<span class="fc" id="L13">    }</span>
+
+    @Override
+    public void prepend(T value) {
+<span class="fc" id="L17">        size++;</span>
+<span class="fc" id="L18">        DequeNode&lt;T&gt; node = new DequeNode&lt;T&gt;(value, null, null);</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        if (first == null) { // Lista vacía</span>
+<span class="fc" id="L20">            first = node;</span>
+<span class="fc" id="L21">            last = node;</span>
+            // los punteros del nodo se quedan a null
+        } else { // lista no vacía
+<span class="fc" id="L24">            first.setPrevious(node);</span>
+<span class="fc" id="L25">            node.setNext(first);</span>
+<span class="fc" id="L26">            first = node;</span>
+        }
+<span class="fc" id="L28">    }</span>
+
+    @Override
+    public void append(T value) {
+<span class="fc" id="L32">        size++;</span>
+<span class="fc" id="L33">        DequeNode&lt;T&gt; node = new DequeNode&lt;T&gt;(value, null, null);</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (first == null) { // Lista vacía</span>
+<span class="fc" id="L35">            first = node;</span>
+<span class="fc" id="L36">            last = node;</span>
+            // los punteros del nodo se quedan a null
+        } else { // lista no vacía
+<span class="fc" id="L39">            last.setNext(node);</span>
+<span class="fc" id="L40">            node.setPrevious(last);</span>
+<span class="fc" id="L41">            last = node;</span>
+        }
+<span class="fc" id="L43">    }</span>
+
+    @Override
+    public void deleteFirst() {
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (first == null) { // lista vacía</span>
+<span class="fc" id="L48">            throw new DoubleEndedQueueException(&quot;Can't delete first element of empty list&quot;);</span>
+        }
+<span class="fc" id="L50">        size--;</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if (first == last) { // lista con un elemento</span>
+<span class="fc" id="L52">            first = null;</span>
+<span class="fc" id="L53">            last = null;</span>
+        } else { // lista con mas de un elemento
+<span class="fc" id="L55">            first = first.getNext();</span>
+<span class="fc" id="L56">            first.setPrevious(null);</span>
+        }
+<span class="fc" id="L58">    }</span>
+
+    @Override
+    public void deleteLast() {
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        if (last == null) { // lista vacía</span>
+<span class="fc" id="L63">            throw new DoubleEndedQueueException(&quot;Can't delete last element of empty list&quot;);</span>
+        }
+<span class="fc" id="L65">        size--;</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        if (first == last) { // lista con un elemento</span>
+<span class="fc" id="L67">            first = null;</span>
+<span class="fc" id="L68">            last = null;</span>
+        } else { // lista con mas de un elemento
+<span class="fc" id="L70">            last = last.getPrevious();</span>
+<span class="fc" id="L71">            last.setNext(null);</span>
+        }
+<span class="fc" id="L73">    }</span>
+
+    @Override
+    public T first() {
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        if (first == null) return null;</span>
+<span class="fc" id="L78">        return first.getItem();</span>
+    }
+
+    @Override
+    public T last() {
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        if (last == null) return null;</span>
+<span class="fc" id="L84">        return last.getItem();</span>
+    }
+
+    @Override
+    public int size() {
+<span class="fc" id="L89">        return size;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -65,7 +65,6 @@ public interface DoubleEndedQueue<T> {
     // (Estas operaciones se incluirán más adelante para ser realizadas en la segunda
     // sesión de laboratorio de esta práctica.)
 
-
     // Complex operations
 
     T get(int index);
