@@ -91,6 +91,17 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
         return size;
     }
 
+    public boolean contains(T value) {
+        DequeNode<T> current = first;
+        while (current != null) {
+            if (current.getItem().equals(value)) {
+                return true;
+            }
+            current = current.getNext();
+        }
+        return false;
+    }
+
     @Override
     public T get(int index) {
         DequeNode<T> nodo= first;
