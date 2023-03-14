@@ -116,12 +116,6 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     }
 
     @Override
-    public boolean contains(T value) {
-
-        return false;
-    }
-
-    @Override
     public void remove(T value) {
         DequeNode<T> nodo= first;
         while(!nodo.getItem().equals(value)){
@@ -138,6 +132,29 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public void sort(Comparator<? super T> comparator) {
+        DoublyLinkedListDeque<T> listaRes = new DoublyLinkedListDeque<T>();
+        T value;
+        int i = size;
+        while(size>0){
+            value = minimo(comparator);
+            listaRes.append(value);
+            remove(value);
+        }
+        this.first = listaRes.first;
+        this.last = listaRes.last;
+    }
 
+    private T minimo(Comparator<? super T> comparator){
+        int i = size;
+        DequeNode<T> nodo = first;
+        T minimo = first.getItem();
+        while(i > 0){
+            if(comparator.compare(first.getItem(), first.getNext().getItem())>0){
+                minimo = first.getNext().getItem();
+            }
+            nodo = first.getNext();
+            i--;
+        }
+        return minimo;
     }
 }
