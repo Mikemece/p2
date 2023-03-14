@@ -1,5 +1,7 @@
 package org.mps.deque;
 
+import java.util.Comparator;
+
 public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     private DequeNode<T> first;
@@ -72,5 +74,44 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public T get(int index) {
+        DequeNode<T> nodo= first;
+        while(index>0){
+            nodo = nodo.getNext();
+            index--;
+            if(nodo==null){
+                throw new DoubleEndedQueueException("Index out of bounds");
+            }
+        }
+        return  nodo.getItem();
+    }
+
+    @Override
+    public boolean contains(T value) {
+
+        return false;
+    }
+
+    @Override
+    public void remove(T value) {
+        DequeNode<T> nodo= first;
+        while(!nodo.getItem().equals(value)){
+            if(nodo.getNext()==null){
+                throw new DoubleEndedQueueException("Value to remove not founded");
+            }
+            nodo=nodo.getNext();
+        }
+        nodo.getPrevious().setNext(nodo.getNext());
+        nodo.getNext().setPrevious(nodo.getPrevious());
+        size--;
+        //nodo=null;
+    }
+
+    @Override
+    public void sort(Comparator<? super T> comparator) {
+
     }
 }
